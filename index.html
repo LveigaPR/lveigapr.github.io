@@ -3,48 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Página Pessoal</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sugestões de Jogos Lotofácil</title>
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-    <script>
-    var firebaseConfig = {
-        apiKey: "AIzaSyBw7WsADyurlSffB_W0kLgSy6thrrz4rKY",
-        authDomain: "autenticacao-pagina-git.firebaseapp.com",
-        projectId: "autenticacao-pagina-git",
-        storageBucket: "autenticacao-pagina-git.appspot.com",
-        messagingSenderId: "43697102834",
-        appId: "1:43697102834:web:12b8fe5a85d47f400dd56b",
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-
-function login() {
-            var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
-
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    document.getElementById('login-form').style.display = 'none';
-                    document.getElementById('protected-content').style.display = 'block';
-                })
-                .catch((error) => {
-                    alert('Erro: ' + error.message);
-                });
-        }
-
-        window.onload = function() {
-            firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
-                    document.getElementById('login-form').style.display = 'none';
-                    document.getElementById('protected-content').style.display = 'block';
-                } else {
-                    document.getElementById('login-form').style.display = 'block';
-                    document.getElementById('protected-content').style.display = 'none';
-                }
-            });
-        };
-    </script>
+    <script src="scripts/firebase-config.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/data-fetch.js"></script>
+    <script src="scripts/analysis.js"></script>
+    <script src="scripts/main.js"></script>
 </head>
 <body>
     <div id="login-form">
@@ -60,13 +27,14 @@ function login() {
 
     <div id="protected-content" style="display: none;">
         <header>
-            <h1>Bem-vindo à minha página pessoal!</h1>
+            <h1>Sugestões de Jogos Lotofácil</h1>
         </header>
         <main>
-            <p>Este é o conteúdo da minha página. Adicione mais informações aqui.</p>
+            <p>Obtendo dados...</p>
+            <div id="suggestions"></div>
         </main>
         <footer>
-            <p>&copy; 2024 Seu Nome</p>
+            <p>&copy; 2024 Lucas Menezes da Veiga</p>
         </footer>
     </div>
 </body>
